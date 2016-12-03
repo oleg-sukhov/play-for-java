@@ -6,6 +6,8 @@ import play.mvc.*;
 
 import services.Counter;
 
+import java.time.LocalDateTime;
+
 /**
  * This controller demonstrates how to use dependency injection to
  * bind a component into a controller class. The class contains an
@@ -29,7 +31,8 @@ public class CountController extends Controller {
      * requests by an entry in the <code>routes</code> config file.
      */
     public Result count() {
-        return ok(Integer.toString(counter.nextCount()));
+        String message = counter.nextCount() + " triggered at " + LocalDateTime.now();
+        return ok(message);
     }
 
 }
